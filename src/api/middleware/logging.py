@@ -6,10 +6,6 @@ from logger import logger
 logger=logging.getLogger()
 import logging
 import sys
-from pythonjsonlogger import jsonlogger
-
-
-
 
 async def logging_middleware(request:Request,call_next):
     start=time.time()
@@ -27,6 +23,7 @@ def setup_logging():
     logger=logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.handlers.clear()
+<<<<<<< HEAD
 
     console_handler=logging.StreamHandler(sys.stdout)
     console_formatter=logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
@@ -39,3 +36,10 @@ def setup_logging():
     file_handler.setFormatter(json_formatter)
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
+=======
+    console_handler=logging.StreamHandler(sys.stdout)
+    console_formatter=logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    console_handler.setFormatter(console_formatter)
+    logger.addHandler(console_handler)
+   
+>>>>>>> feature/deployed_api_gateway

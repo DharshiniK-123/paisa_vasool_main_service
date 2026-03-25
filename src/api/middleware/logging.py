@@ -1,12 +1,14 @@
+from typing import Any, Callable
+
 import logging
 import sys
 import time
 import uuid
 
-from fastapi import Request
+from fastapi import Request, Response
 
 
-def setup_logging():
+def setup_logging() -> None:
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.handlers.clear()
@@ -17,7 +19,9 @@ def setup_logging():
     logger.addHandler(console_handler)
 
 
-async def logging_middleware(request: Request, call_next):
+async def logging_middleware(
+    request: Request, call_next: Callable[[Request], Any]
+) -> Any:
     request_id = str(uuid.uuid4())[:8]
     request.state.request_id = request_id
 
@@ -41,3 +45,4 @@ async def logging_middleware(request: Request, call_next):
 
     response.headers["X-Request-ID"] = request_id
     return response
+

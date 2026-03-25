@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 @router.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
-async def proxy_auth(request: Request, path: str):
+async def proxy_auth(request: Request, path: str) -> Response:
+
     """API gateway route for auth service"""
 
     forward_headers = dict(request.headers)

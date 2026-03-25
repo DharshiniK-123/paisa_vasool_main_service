@@ -1,7 +1,7 @@
 import logging
 
 import httpx
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Request, Response, UploadFile
 
 from src.config.settings import settings
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 @router.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
-async def proxy_matching(request: Request, path: str):
+async def proxy_matching(request: Request, path: str) -> Response:
     """API gateway route for payment_intake_matching service"""
 
     url = f"{MATCHING_SERVICE_URL}/api/v1/payment_intake_matching/{path}"
@@ -33,12 +33,13 @@ async def proxy_matching(request: Request, path: str):
                 data = {}
 
                 for key, value in form.multi_items():
-                    if hasattr(value, "filename"):
+                    if isinstance(value, UploadFile):
                         files.append(
                             (key, (value.filename, await value.read(), value.content_type))
                         )
                     else:
                         data[key] = value
+
 
                 response = await client.request(
                     method=request.method,

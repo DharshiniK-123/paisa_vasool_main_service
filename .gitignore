@@ -5,3 +5,5 @@ node_modulesvenv/
 __pycache__/
 *.log
 app.log
+deploy.sh
+mypy_errors.txt

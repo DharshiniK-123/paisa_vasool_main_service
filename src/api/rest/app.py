@@ -23,5 +23,6 @@ app.include_router(payment_intake_matching_router)
 
 
 @app.get("/")
-async def health():
+async def health() -> dict[str, str]:
     return {"status": "gateway running"}
+

@@ -1,0 +1,13 @@
+src/api/middleware/cors.py:6: error: Function is missing a type annotation  [no-untyped-def]
+src/api/rest/routes/payment_intake_matching_routes.py:16: error: Function is missing a return type annotation  [no-untyped-def]
+src/api/rest/routes/payment_intake_matching_routes.py:38: error: Item "str" of "UploadFile | str" has no attribute "read"  [union-attr]
+src/api/rest/routes/payment_intake_matching_routes.py:38: error: Item "str" of "UploadFile | str" has no attribute "content_type"  [union-attr]
+src/api/rest/routes/auth_service_routes.py:16: error: Function is missing a return type annotation  [no-untyped-def]
+src/api/middleware/logging.py:9: error: Function is missing a return type annotation  [no-untyped-def]
+src/api/middleware/logging.py:9: note: Use "-> None" if function does not return a value
+src/api/middleware/logging.py:20: error: Function is missing a return type annotation  [no-untyped-def]
+src/api/middleware/logging.py:20: error: Function is missing a type annotation for one or more arguments  [no-untyped-def]
+src/api/rest/app.py:11: error: Call to untyped function "setup_logging" in typed context  [no-untyped-call]
+src/api/rest/app.py:18: error: Call to untyped function "setup_cors" in typed context  [no-untyped-call]
+src/api/rest/app.py:26: error: Function is missing a return type annotation  [no-untyped-def]
+Found 11 errors in 5 files (checked 13 source files)
